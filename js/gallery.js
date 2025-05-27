@@ -78,21 +78,17 @@ const galleryMarkup = images.map(({ preview, original, description }) =>
 
 gallery.addEventListener("click", event => {
   event.preventDefault();
-});
 
-gallery.addEventListener("click", event => {
-  event.preventDefault();
+  const clickedImage = event.target;
+  if (!clickedImage.classList.contains("gallery-image")) return;
 
-  const clickedImage = event.target.closest(".gallery-image");
-
-  if (!clickedImage) return; 
   const largeImageSrc = clickedImage.dataset.source;
 
-  
   const instance = basicLightbox.create(`
-    <img src="${largeImageSrc}" width="800" height="600">
-  `);
-  
+    <img src="${largeImageSrc}" width="800" height="600">`);
+
   instance.show();
 });
-  console.log(clickedImage.dataset.source);
+
+
+
